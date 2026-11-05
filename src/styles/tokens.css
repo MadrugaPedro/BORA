@@ -1,0 +1,30 @@
+:root {
+    /*cores da marca*/
+  --color-propolis: #3f140d;
+  --color-coral: #ff563d;
+  --color-orange: #ff863d;
+
+    /*estados de ação/botões*/
+  --color-button-primary: #e5462c;
+  --color-button-primary-hover: #cc3e27;
+  --color-button-primary-active: #b23622;
+
+  /*tipografia*/
+  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  /*espaçamento*/
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem;  /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem;    /* 16px */
+  --space-6: 1.5rem;  /* 24px */
+  --space-8: 2rem;    /* 32px */
+  --space-12: 3rem;   /* 48px */
+
+  /*raios de borda*/
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem;  /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem;    /* 16px */
+  --radius-full: 9999px;
+}

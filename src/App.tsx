@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { ProvaOffline } from './offline/ProvaOffline';
 import { lerUltimaTela, salvarUltimaTela } from './ultimaTela';
 
 function Tela({ titulo }: { titulo: string }) {
@@ -32,13 +33,15 @@ export function App() {
     <>
       <LembrarUltimaTela />
       <nav>
-        <Link to="/">Início</Link> <Link to="/colmeias">Colmeias</Link> <Link to="/alertas">Alertas</Link>
+        <Link to="/">Início</Link> <Link to="/colmeias">Colmeias</Link> <Link to="/alertas">Alertas</Link>{' '}
+        <Link to="/offline">Offline</Link>
       </nav>
       <main>
         <Routes>
           <Route path="/" element={<Tela titulo="Início" />} />
           <Route path="/colmeias" element={<Tela titulo="Colmeias" />} />
           <Route path="/alertas" element={<Tela titulo="Alertas" />} />
+          <Route path="/offline" element={<ProvaOffline />} />
         </Routes>
       </main>
     </>
