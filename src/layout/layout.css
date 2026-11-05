@@ -1,0 +1,225 @@
+/* Celular primeiro (a partir de 390 px). Abaixo de 48rem (768 px): menu embaixo. A partir daí: barra lateral. */
+
+/* Base global: sem a margem de 8 px do navegador e com padding contado dentro da largura. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  --altura-menu-inferior: 4rem;
+  --largura-menu-lateral: 15rem;
+  min-height: 100dvh;
+  font-family: var(--font-family-sans);
+  color: var(--color-propolis);
+}
+
+.app__coluna {
+  flex: 1;
+  min-width: 0; /* deixa tabelas e textos largos rolarem dentro da coluna, sem estourar a página */
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.app__conteudo {
+  flex: 1;
+  padding: var(--space-4);
+  padding-bottom: calc(var(--altura-menu-inferior) + var(--space-4) + env(safe-area-inset-bottom));
+}
+
+/* ---------- Menu ---------- */
+
+.menu {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 10;
+  background: var(--color-propolis);
+  color: #fff;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.menu__marca {
+  display: none;
+}
+
+.menu__lista {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__item {
+  flex: 1;
+  min-width: 0;
+}
+
+.menu__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: var(--altura-menu-inferior);
+  padding: var(--space-2);
+  color: inherit;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.menu__link[aria-current='page'] {
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.menu__link:hover {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.menu__link:focus-visible,
+.botao-qr:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: -2px;
+}
+
+/* ---------- Topo ---------- */
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: #fff;
+  border-bottom: 1px solid rgb(63 20 13 / 0.15);
+}
+
+.topo__marca {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.topo__acoes {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto;
+}
+
+.conexao {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.conexao__ponto {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: var(--radius-full);
+  background: currentColor;
+}
+
+.conexao--online {
+  color: #1a7f37;
+}
+
+.conexao--offline {
+  color: var(--color-button-primary);
+}
+
+.botao-qr {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem; /* alvo de toque confortável no celular */
+  padding: var(--space-2) var(--space-4);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-button-primary);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-qr:hover {
+  background: var(--color-button-primary-hover);
+}
+
+.botao-qr:active {
+  background: var(--color-button-primary-active);
+}
+
+.botao-qr:focus-visible {
+  outline-color: var(--color-propolis);
+  outline-offset: 2px;
+}
+
+/* ---------- Desktop e tablet: barra lateral ---------- */
+
+@media (min-width: 48rem) {
+  .app {
+    display: flex;
+  }
+
+  .app__conteudo {
+    padding: var(--space-8);
+  }
+
+  .menu {
+    position: sticky;
+    top: 0;
+    inset: 0 auto auto 0;
+    flex: none;
+    width: var(--largura-menu-lateral);
+    height: 100dvh;
+    padding: var(--space-6) var(--space-3);
+    overflow-y: auto;
+  }
+
+  .menu__marca {
+    display: block;
+    margin: 0 var(--space-3) var(--space-6);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .menu__lista {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .menu__link {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    min-height: 2.75rem;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+  }
+
+  .menu__link[aria-current='page'] {
+    background: rgb(255 255 255 / 0.1);
+  }
+
+  .topo {
+    padding: var(--space-3) var(--space-8);
+  }
+
+  .topo__marca {
+    display: none;
+  }
+}
